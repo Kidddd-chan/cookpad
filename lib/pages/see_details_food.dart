@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fn_prj/pages/home_pages.dart';
 
-
 class SeeDetailsFood extends StatefulWidget {
   const SeeDetailsFood({super.key});
+
 
   @override
   State<SeeDetailsFood> createState() => _SeeDetailsFoodState();
@@ -24,6 +24,7 @@ class _SeeDetailsFoodState extends State<SeeDetailsFood> {
   }
   ScrollController _scrollController = ScrollController();
   double _opacity = 1.0;
+  bool isFavorite = false;
 
   @override
   void initState() {
@@ -48,6 +49,16 @@ class _SeeDetailsFoodState extends State<SeeDetailsFood> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _scrollController.animateTo(
+            0,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+        },
+        child: const Icon(Icons.arrow_upward),
+      ),
       body: SingleChildScrollView(
         controller: _scrollController,
         child: Column(
@@ -67,7 +78,6 @@ class _SeeDetailsFoodState extends State<SeeDetailsFood> {
                     ),
                   ),
                 ),
-                // Ghi chữ lên ảnh
                 const Positioned(
                   bottom: 20, // Căn chữ gần sát đáy ảnh
                   left: 20, // Căn lề trái
@@ -91,7 +101,12 @@ class _SeeDetailsFoodState extends State<SeeDetailsFood> {
                   top: 20,
                   left: 20,
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePages()),
+                      );
+                    },
                     icon: const Icon(Icons.arrow_back),
                     color: Colors.white,
                   ),
@@ -100,16 +115,24 @@ class _SeeDetailsFoodState extends State<SeeDetailsFood> {
                   top: 20,
                   right: 20,
                   child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.favorite_border),
-                    color: Colors.white,
+                    onPressed: () {
+                      setState(() {
+                        isFavorite = !isFavorite;
+                      });
+                    },
+                    icon: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 Positioned(
                   top: 20,
                   right: 70,
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Share.share('Thử ngay món ăn "Thịt Kho Tàu" với công thức đơn giản này! Link: https://example.com');
+                    },
                     icon: const Icon(Icons.share),
                     color: Colors.white,
                   ),
@@ -143,6 +166,7 @@ class _SeeDetailsFoodState extends State<SeeDetailsFood> {
                       Text("4 người", style: TextStyle(color: Colors.grey)),
                     ],
                   ),
+                  Divider(),
                 ],
               ),
             ),
@@ -198,8 +222,7 @@ class _SeeDetailsFoodState extends State<SeeDetailsFood> {
                   SizedBox(height: 8),
                   StepCard(
                     stepNumber: 1,
-                    description: "Thịt mua về rửa sạch cắt miếng to. cắm nước sôi đổ vào thịt cho 1 muỗng muối hạt, vài giọt dấm trắng để khử mùi thịt heo. trụng thịt 3phut gắp thịt ra để ráo nước. xong ướp thịt với 2 muỗng hạt nêm+1 muỗng muối + 1thia nước màu+2 muỗng nước mắm+ 1chut tiêu và nước cốt tỏi+ hành+ ớt,.(giã nước cốt Lấy cối bỏ ớt+hành+tỏi+ 1/3 thìa cafe bột ngọt, 2 muỗng đường cho vào cối dã nhuyễn. Bỏ vào thịt heo ướp 30-1tieng."
-                        "\nThịt ướp xong bỏ vào chảo đảo cho săn bề mặt.( trứng luộc chín bóc vỏ để qua 1bên.",
+                    description: "Thịt mua về rửa sạch cắt miếng to. cắm nước sôi đổ vào thịt cho 1 muỗng muối hạt, vài giọt dấm trắng để khử mùi thịt heo. trụng thịt 3phut gắp thịt ra để ráo nước. xong ướp thịt với 2 muỗng hạt nêm+1 muỗng muối + 1thia nước màu+2 muỗng nước mắm+ 1chut tiêu và nước cốt tỏi+ hành+ ớt,.(giã nước cốt Lấy cối bỏ ớt+hành+tỏi+ 1/3 thìa cafe bột ngọt, 2 muỗng đường cho vào cối dã nhuyễn. Bỏ vào thịt heo ướp 30-1tieng.\nThịt ướp xong bỏ vào chảo đảo cho săn bề mặt.( trứng luộc chín bóc vỏ để qua 1bên.",
                     imageUrl: "https://danviet.mediacdn.vn/upload/2-2019/images/2019-04-16/Cach-lam-thit-kho-tau-thom-ngon-bat-bai-cach-lam-thit-kho-tau-2-1555427684-width600height450.jpg", // Replace with your image link
                   ),
                   SizedBox(height: 10),
@@ -211,35 +234,34 @@ class _SeeDetailsFoodState extends State<SeeDetailsFood> {
                 ],
               ),
             ),
-
           ],
         ),
       ),
       bottomNavigationBar:BottomNavigationBar(
-        backgroundColor: Colors.white,
-        selectedItemColor: Colors.black38,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        elevation: 0,
-        onTap: (index) {
-          if (index == 0) {
-            // Nếu bấm vào home, chuyển đến WelcomePage
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => SeeDetailsFood()),
-            );
-          } else if (index == 1) {
-            // Nếu bấm vào person, chuyển đến HomePage
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => HomePages()),
-            );
-          } else {
-            // Các trang khác
-            _onItemTapped(index);
-          }
-        },
+        // backgroundColor: Colors.white,
+        // selectedItemColor: Colors.black38,
+        // showSelectedLabels: false,
+        // showUnselectedLabels: false,
+        // type: BottomNavigationBarType.fixed,
+        // elevation: 0,
+        // onTap: (index) {
+        //   if (index == 0) {
+        //     // Nếu bấm vào home, chuyển đến WelcomePage
+        //     Navigator.pushReplacement(
+        //       context,
+        //       MaterialPageRoute(builder: (context) => SeeDetailsFood()),
+        //     );
+        //   } else if (index == 1) {
+        //     // Nếu bấm vào person, chuyển đến HomePage
+        //     Navigator.pushReplacement(
+        //       context,
+        //       MaterialPageRoute(builder: (context) => HomePages()),
+        //     );
+        //   } else {
+        //     // Các trang khác
+        //     _onItemTapped(index);
+        //   }
+        // },
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.search), label: "Tìm kiếm", backgroundColor: Colors.white),
           BottomNavigationBarItem(icon: Icon(Icons.featured_play_list_outlined), label: "Kho món ăn của bạn"),

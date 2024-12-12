@@ -47,21 +47,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDQhyD7NtqZ6e8-ob3oGatw4CQ0LYqEZak',
-    appId: '1:577742085986:web:7a345a001550165ad9163b',
-    messagingSenderId: '577742085986',
-    projectId: 'cook-cea38',
-    authDomain: 'cook-cea38.firebaseapp.com',
-    storageBucket: 'cook-cea38.firebasestorage.app',
-    measurementId: 'G-4KFF0B8JP7',
-  );
-
+      apiKey: 'AIzaSyDQhyD7NtqZ6e8-ob3oGatw4CQ0LYqEZak',
+      appId: '1:577742085986:web:7a345a001550165ad9163b',
+      messagingSenderId: '577742085986',
+      projectId: 'cook-cea38',
+      authDomain: 'cook-cea38.firebaseapp.com',
+      storageBucket: 'cook-cea38.appspot.com', // Đúng định dạng
+      measurementId: 'G-4KFF0B8JP7',
+      databaseURL: 'https://cook-cea38-default-rtdb.firebaseio.com/');
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDftGWd1btma2Rz39Gvu3WrspCLLR-ga60',
     appId: '1:577742085986:android:a303b7eb5f837d26d9163b',
     messagingSenderId: '577742085986',
     projectId: 'cook-cea38',
-    storageBucket: 'cook-cea38.firebasestorage.app',
+    storageBucket: 'cook-cea38.appspot.com', // Sửa lại ở đây
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
@@ -69,8 +68,7 @@ class DefaultFirebaseOptions {
     appId: '1:577742085986:ios:17394a91767b3d0cd9163b',
     messagingSenderId: '577742085986',
     projectId: 'cook-cea38',
-    storageBucket: 'cook-cea38.firebasestorage.app',
+    storageBucket: 'cook-cea38.appspot.com', // Sửa lại ở đây
     iosBundleId: 'com.example.fnPrj',
   );
-
 }

@@ -16,7 +16,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
-  var _autoValidateMode = AutovalidateMode.disabled;
+  final _autoValidateMode = AutovalidateMode.disabled;
 
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -54,7 +54,6 @@ class _RegisterPageState extends State<RegisterPage> {
               password, // Use plain password, Firebase will hash it internally
         );
 
-        // Optionally: You can store additional user information (like name) in Firebase Firestore
         await FirebaseFirestore.instance
             .collection('users')
             .doc(userCredential.user!.uid)
@@ -108,7 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
             color: Colors.white,
           ),
         ),
-        title: Text(
+        title: const Text(
           'COOKPAD',
           style: TextStyle(
             fontFamily: "Lato",
@@ -126,7 +125,7 @@ class _RegisterPageState extends State<RegisterPage> {
             alignment: Alignment.center,
             margin:
                 const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 40),
-            child: Text(
+            child: const Text(
               'Register',
               style: TextStyle(
                 fontFamily: "Lato",
@@ -137,7 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(height: 25),
+          const SizedBox(height: 25),
           _buildFormRegister(),
           _buildHaveAccount(),
         ],
@@ -150,16 +149,16 @@ class _RegisterPageState extends State<RegisterPage> {
       key: _formKey,
       autovalidateMode: _autoValidateMode,
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 24),
+        margin: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildUsernameField(),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             _buildPasswordField(),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             _buildConfirmPasswordField(),
             _buildRegisterButton(),
           ],
@@ -187,7 +186,7 @@ class _RegisterPageState extends State<RegisterPage> {
             controller: _nameController,
             decoration: InputDecoration(
               hintText: "Enter your Username",
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                 color: Color(0xFF535353),
                 fontFamily: "Lato",
                 fontSize: 16,
@@ -198,7 +197,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   color: Colors.orange.withOpacity(0.87),
                 ),
               ),
-              fillColor: Color(0xFFFFE0B2).withOpacity(0.6),
+              fillColor: const Color(0xFFFFE0B2).withOpacity(0.6),
               filled: true,
             ),
             validator: (String? value) {
@@ -207,7 +206,7 @@ class _RegisterPageState extends State<RegisterPage> {
               }
               return null;
             },
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.orange,
               fontFamily: "Lato",
               fontSize: 16,
@@ -237,7 +236,7 @@ class _RegisterPageState extends State<RegisterPage> {
             controller: _passwordController,
             decoration: InputDecoration(
               hintText: ". . . . . . . . . . . .",
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                 color: Color(0xFF535353),
                 fontFamily: "Lato",
                 fontSize: 16,
@@ -245,11 +244,11 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(4),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Colors.orange,
                 ),
               ),
-              fillColor: Color(0xFFFFE0B2).withOpacity(0.6),
+              fillColor: const Color(0xFFFFE0B2).withOpacity(0.6),
               filled: true,
             ),
             validator: (String? value) {
@@ -261,7 +260,7 @@ class _RegisterPageState extends State<RegisterPage> {
               }
               return null;
             },
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.orange,
               fontFamily: "Lato",
               fontSize: 16,
@@ -292,7 +291,7 @@ class _RegisterPageState extends State<RegisterPage> {
             controller: _confirmPasswordController,
             decoration: InputDecoration(
               hintText: ". . . . . . . . . . . .",
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                 color: Color(0xFF535353),
                 fontFamily: "Lato",
                 fontSize: 16,
@@ -300,11 +299,11 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(4),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Colors.orange,
                 ),
               ),
-              fillColor: Color(0xFFFFE0B2).withOpacity(0.6),
+              fillColor: const Color(0xFFFFE0B2).withOpacity(0.6),
               filled: true,
             ),
             validator: (String? value) {
@@ -316,7 +315,7 @@ class _RegisterPageState extends State<RegisterPage> {
               }
               return null;
             },
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.orange,
               fontFamily: "Lato",
               fontSize: 16,
@@ -338,7 +337,7 @@ class _RegisterPageState extends State<RegisterPage> {
           backgroundColor: Colors.orange,
           padding: const EdgeInsets.symmetric(vertical: 16),
         ),
-        child: Text(
+        child: const Text(
           'Register',
           style: TextStyle(
             fontFamily: "Lato",
@@ -369,7 +368,7 @@ class _RegisterPageState extends State<RegisterPage> {
             onTap: () {
               _goToLoginPage(context);
             },
-            child: Text(
+            child: const Text(
               'Login',
               style: TextStyle(
                 fontFamily: "Lato",

@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
               color: Colors.white,
             ),
           ),
-          title: Text('COOKPAD',
+          title: const Text('COOKPAD',
               style: TextStyle(
                 fontFamily: "Lato",
                 fontSize: 30.0,
@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buidPageTitle(),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             _buidFormLogin(),
             _buildHaveNotAccount(context),
           ],
@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 40),
       alignment: Alignment.center,
-      child: Text(
+      child: const Text(
         'Login',
         style: TextStyle(
           fontFamily: "Lato",
@@ -72,14 +72,14 @@ class _LoginPageState extends State<LoginPage> {
         key: _formKey,
         autovalidateMode: _autoValidateMode,
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 24),
+          margin: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 53),
+              const SizedBox(height: 53),
               _buildUsernameField(),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               _buildPasswordField(),
               _buildLoginButton(),
             ],
@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
           child: TextFormField(
             decoration: InputDecoration(
               hintText: "Enter your Username",
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                 color: Color(0xFF535353),
                 fontFamily: "Lato",
                 fontSize: 16,
@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.orange.withOpacity(0.87),
                 ),
               ),
-              fillColor: Color(0xFFFFE0B2).withOpacity(0.6),
+              fillColor: const Color(0xFFFFE0B2).withOpacity(0.6),
               filled: true,
             ),
             validator: (String? value) {
@@ -132,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                 return 'Invalid email address';
               }
             },
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.orange,
               fontFamily: "Lato",
               fontSize: 16,
@@ -161,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
           child: TextFormField(
             decoration: InputDecoration(
               hintText: ". . . . . . . . . . . .",
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                 color: Color(0xFF535353),
                 fontFamily: "Lato",
                 fontSize: 16,
@@ -169,11 +169,11 @@ class _LoginPageState extends State<LoginPage> {
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(4),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Colors.orange,
                 ),
               ),
-              fillColor: Color(0xFFFFE0B2).withOpacity(0.6),
+              fillColor: const Color(0xFFFFE0B2).withOpacity(0.6),
               filled: true,
             ),
             validator: (String? value) {
@@ -185,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
               }
               return null;
             },
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.orange,
               fontFamily: "Lato",
               fontSize: 16,
@@ -229,11 +229,11 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildHaveNotAccount(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.only(top: 46, bottom: 20),
+      margin: const EdgeInsets.only(top: 46, bottom: 20),
       child: RichText(
         text: TextSpan(
           text: "Don't have account? ",
-          style: TextStyle(
+          style: const TextStyle(
             fontFamily: "Lato",
             fontSize: 16,
             color: Color(0xFF979797),
@@ -241,7 +241,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             TextSpan(
                 text: "Register",
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "Lato",
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
